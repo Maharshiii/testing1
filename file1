@@ -1,0 +1,8 @@
+Filter('[dbo].[entries]', And(
+    Or(IsBlank(searchTerm.Text), searchTerm.Text in [@PO_x0020__x0023_], searchTerm.Text in Customer_x0020_Name, searchTerm.Text in Rail_x0020_Id),
+    Or(And(ShowInSpec.Value, in_spec = "Y"),
+       And(ShowOffSpec.Value, in_spec = "N")),
+    Or(And(ShowNoCoa.Value, IsBlank(PO_x0020__x0023_)),
+       And(ShowCoa.Value, Not(IsBlank(PO_x0020__x0023_))))
+    )
+)
